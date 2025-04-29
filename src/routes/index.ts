@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { sendEmail } from '../models/mailer';
+import { uploadFile } from '../controllers/upload';
+import { upload } from '../middlewares/S3';
 
 const router = Router();
 
@@ -19,5 +21,6 @@ router.get('/test', (req, res) => {
     })
 })
 
+router.post('/uploads', upload.single('file'), uploadFile);
 
 export default router;
