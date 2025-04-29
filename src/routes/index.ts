@@ -7,6 +7,11 @@ router.get('', (req, res) => {
     res.render('index');
 })
 
+// Add the new mailSender route
+router.get('/mailSender', (req, res) => {
+    res.render('mailSender');
+});
+
 router.get('/test', (req, res) => {
     sendEmail(
         'your-user@gmail.com', 
@@ -19,5 +24,27 @@ router.get('/test', (req, res) => {
     })
 })
 
+router.post('/send-email', (req, res):any => {
+    const { recipient, subject, body } = req.body;
+    
+    // Validate required fields
+    if (!recipient || !body) {
+        return res.status(400).json({ 
+            error: "Missing required fields: recipient and body are required" 
+        });
+    }
+
+    // Use default subject if not provided
+    const emailSubject = subject || "Secret Message from Agent";
+    
+    sendEmail(recipient, emailSubject, body)
+        .then(() => {
+            res.status(200).json({ message: "Email sent successfully" });
+        })
+        .catch((error) => {
+            console.error("Email sending failed:", error);
+            res.status(500).json({ error: "Failed to send email" });
+        });
+});
 
 export default router;
