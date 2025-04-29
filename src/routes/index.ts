@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { sendEmail } from '../models/mailer';
+import { uploadFile } from '../controllers/upload';
+import { upload } from '../middlewares/S3';
 
 const router = Router();
 
@@ -24,6 +26,7 @@ router.get('/test', (req, res) => {
     })
 })
 
+<<<<<<< HEAD
 router.post('/send-email', (req, res):any => {
     const { recipient, subject, body } = req.body;
     
@@ -46,5 +49,8 @@ router.post('/send-email', (req, res):any => {
             res.status(500).json({ error: "Failed to send email" });
         });
 });
+=======
+router.post('/uploads', upload.single('file'), uploadFile);
+>>>>>>> 8753a3338d349bb6911942736ea373444722567a
 
 export default router;
