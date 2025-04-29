@@ -5,7 +5,7 @@ import { connect } from 'mongoose';
 import { config } from 'dotenv';
 config();
 
-import routes from './routes';
+import routes from './routes/index';
 
 const port = process.env.PORT || 3000;
 
@@ -20,7 +20,7 @@ app.use('/assets', express.static(publicPath));
 
 app.use(routes);
 
-const uri = process.env.DB_URL;
+const uri = process.env.MONGO_URI;
 
 if (uri) {
     connect(uri).then(() => {
