@@ -1,3 +1,32 @@
-<h1>Secret Agents</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz de Desencriptación</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Interfaz de Desencriptación</h1>
 
-<p>lorem ipsum</p>
+        <div class="input-section">
+            <label for="encrypted-text">Texto Encriptado:</label>
+            <input type="text" id="encrypted-text" name="encryptedText" placeholder="Ingresa el texto a desencriptar aquí...">
+        </div>
+
+        <div class="output-section">
+            <h2>Resultado:</h2>
+            <div id="decrypted-content">
+                Aquí aparecerá el texto desencriptado.
+            </div>
+        </div>
+
+        <div class="button-section">
+            <button id="decrypt-button">
+                Desencriptar
+            </button>
+        </div>
+    </div>
+</body>
+</html>

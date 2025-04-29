@@ -5,9 +5,9 @@ import { upload } from '../middlewares/S3';
 
 const router = Router();
 
-router.get('', (req, res) => {
-    res.render('index');
-})
+router.get('/decode', (req, res) => {
+    res.render('index', { title: 'Desencriptar Mensaje' });
+});
 
 // Add the new mailSender route
 router.get('/mailSender', (req, res) => {
