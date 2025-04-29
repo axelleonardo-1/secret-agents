@@ -3,9 +3,9 @@ import { sendEmail } from '../models/mailer';
 
 const router = Router();
 
-router.get('', (req, res) => {
-    res.render('index');
-})
+router.get('/decode', (req, res) => {
+    res.render('index', { title: 'Desencriptar Mensaje' });
+});
 
 router.get('/test', (req, res) => {
     sendEmail(
