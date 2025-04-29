@@ -10,10 +10,13 @@ import routes from './routes/index';
 const port = process.env.PORT || 3000;
 
 const app = express();
+// Add JSON body parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
-
 
 const publicPath = join(__dirname, '..', 'public');
 app.use('/assets', express.static(publicPath));
