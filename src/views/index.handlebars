@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interfaz de Desencriptación</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
     <div class="container">
@@ -28,5 +28,38 @@
             </button>
         </div>
     </div>
+
+    <script>
+        document.getElementById('decrypt-button').addEventListener('click', function() {
+            try {
+                // Get the encrypted text from input
+                const encryptedText = document.getElementById('encrypted-text').value.trim();
+                
+                if (!encryptedText) {
+                    document.getElementById('decrypted-content').innerHTML = 
+                        '<span style="color: #721c24;">Please enter an encrypted message.</span>';
+                    return;
+                }
+                
+                let base64Content = encryptedText;
+                
+                if (encryptedText.includes('ENCRYPTED MESSAGE:')) {
+                    const matches = encryptedText.match(/ENCRYPTED MESSAGE:<\/p><p>(.*?)<\/p>/);
+                    if (matches && matches[1]) {
+                        base64Content = matches[1];
+                    }
+                }
+                
+                const decodedText = atob(base64Content);
+                
+                document.getElementById('decrypted-content').innerHTML = 
+                    `<pre>${decodedText}</pre>`;
+                
+            } catch (error) {
+                document.getElementById('decrypted-content').innerHTML = 
+                    `<span style="color: #721c24;">Error decoding message: ${error.message}</span>`;
+            }
+        });
+    </script>
 </body>
 </html>

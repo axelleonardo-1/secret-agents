@@ -70,3 +70,19 @@ Para poder enviar correos desde una cuenta de Gmail:
 
 
 ¡Buena suerte, agentes! 🕶️
+
+
+
+## IMPLEMENTADO
+
+endpoints:
+
+**No view**
+/uploads --> for files:
+  body:
+    name:file --> select file
+
+**Withviews**
+/decode --> for decoding mail content.
+
+/mailSender --> for sending mail.

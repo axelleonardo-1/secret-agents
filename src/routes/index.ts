@@ -9,7 +9,6 @@ router.get('/decode', (req, res) => {
     res.render('index', { title: 'Desencriptar Mensaje' });
 });
 
-// Add the new mailSender route
 router.get('/mailSender', (req, res) => {
     res.render('mailSender');
 });
@@ -26,7 +25,6 @@ router.get('/test', (req, res) => {
     })
 })
 
-<<<<<<< HEAD
 router.post('/send-email', (req, res):any => {
     const { recipient, subject, body } = req.body;
     
@@ -49,8 +47,6 @@ router.post('/send-email', (req, res):any => {
             res.status(500).json({ error: "Failed to send email" });
         });
 });
-=======
 router.post('/uploads', upload.single('file'), uploadFile);
->>>>>>> 8753a3338d349bb6911942736ea373444722567a
 
 export default router;
